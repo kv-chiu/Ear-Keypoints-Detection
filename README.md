@@ -78,7 +78,7 @@ CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python </Absolute/Path/of/mmpose/tools/tr
 CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python </Absolute/Path/of/mmpose/tools/train.py> \
     </Absolute/Path/of/data/MMPosehomework/example/rtmpose-s-ear.py> \
     --work-dir </Absolute/Path/of/work/result/mmpose> \
-	--resume <</Absolute/Path/of/pth> > output.log 2>&1 &
+	--resume </Absolute/Path/of/pth> > output.log 2>&1 &
 ```
 
 ## 评估结果
