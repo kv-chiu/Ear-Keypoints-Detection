@@ -57,8 +57,9 @@ VAL_BATCH_SIZE = 8
 # 移动到work/mmdetection目录
 cd /media/ders/mazhiming/mm/mmhomeworke2/work/result/mmdet
 
-# 开始训练
-CUDA_VISIBLE_DEVICES=1 PORT=8082 nohup python </Absolute/Path/of/mmdetection/tools/train.py> \
+# 开始训练，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
+CUDA_VISIBLE_DEVICES=1 PORT=8082 nohup python \
+	</Absolute/Path/of/mmdetection/tools/train.py> \
     </Absolute/Path/of/data/MMPosehomework/example/rtmdet_tiny_ear.py> \
     --work-dir </Absolute/Path/of/work/result/mmdet> > output.log 2>&1 &
 ```
@@ -67,15 +68,17 @@ CUDA_VISIBLE_DEVICES=1 PORT=8082 nohup python </Absolute/Path/of/mmdetection/too
 # 移动到work/mmpose目录
 cd /media/ders/mazhiming/mm/mmhomeworke2/work/result/mmpose
 
-# 开始训练
-CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python </Absolute/Path/of/mmpose/tools/train.py> \
+# 开始训练，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
+CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python \
+	</Absolute/Path/of/mmpose/tools/train.py> \
     </Absolute/Path/of/data/MMPosehomework/example/rtmpose-s-ear.py> \
     --work-dir </Absolute/Path/of/work/result/mmpose> > output.log 2>&1 &
 ```
 
 ```python
-# 中途断开，调参数再训
-CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python </Absolute/Path/of/mmpose/tools/train.py> \
+# 中途断开，调参数再训，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
+CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python \
+	</Absolute/Path/of/mmpose/tools/train.py> \
     </Absolute/Path/of/data/MMPosehomework/example/rtmpose-s-ear.py> \
     --work-dir </Absolute/Path/of/work/result/mmpose> \
 	--resume </Absolute/Path/of/pth> > output.log 2>&1 &
@@ -83,71 +86,203 @@ CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python </Absolute/Path/of/mmpose/tools/tr
 
 ## 评估结果
 
-### MMdet (epoch200)
+### 日志分析
 
->  Average Precision  (AP) @[ IoU=0.50:0.95 | area=  all | maxDets=100 ] = 0.730
->
->  Average Precision  (AP) @[ IoU=0.50    | area=  all | maxDets=100 ] = 0.962
->
->  Average Precision  (AP) @[ IoU=0.75    | area=  all | maxDets=100 ] = 0.936
->
->  Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
->
->  Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
->
->  Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.730
->
->  Average Recall   (AR) @[ IoU=0.50:0.95 | area=  all | maxDets=  1 ] = 0.764
->
->  Average Recall   (AR) @[ IoU=0.50:0.95 | area=  all | maxDets= 10 ] = 0.769
->
->  Average Recall   (AR) @[ IoU=0.50:0.95 | area=  all | maxDets=100 ] = 0.769
->
->  Average Recall   (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
->
->  Average Recall   (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
->
->  Average Recall   (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.769
->
-> 06/04 21:48:25 - mmengine - INFO - bbox_mAP_copypaste: 0.730 0.962 0.936 -1.000 -1.000 0.730
->
-> 06/04 21:48:25 - mmengine - INFO - Epoch(val) [200][6/6]   coco/bbox_mAP: 0.7300  coco/bbox_mAP_50: 0.9620  coco/bbox_mAP_75: 0.9360  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: -1.0000  coco/bbox_mAP_l: 0.7300  data_time: 1.0237  time: 1.0675
+#### MMdet (epoch200 + epoch200)
 
-### MMpose (epoch150)
+>   Average Precision  (AP) @[ IoU=0.50:0.95 | area=  all | maxDets=100 ] = 0.822
+>
+>   Average Precision  (AP) @[ IoU=0.50    | area=  all | maxDets=100 ] = 0.967
+>
+>   Average Precision  (AP) @[ IoU=0.75    | area=  all | maxDets=100 ] = 0.967
+>
+>   Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+>
+>   Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
+>
+>   Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.822
+>
+>   Average Recall   (AR) @[ IoU=0.50:0.95 | area=  all | maxDets=  1 ] = 0.857
+>
+>   Average Recall   (AR) @[ IoU=0.50:0.95 | area=  all | maxDets= 10 ] = 0.857
+>
+>   Average Recall   (AR) @[ IoU=0.50:0.95 | area=  all | maxDets=100 ] = 0.857
+>
+>   Average Recall   (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+>
+>   Average Recall   (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
+>
+>   Average Recall   (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.857
+>
+> 06/07 02:36:16 - mmengine - INFO - bbox_mAP_copypaste: 0.822 0.967 0.967 -1.000 -1.000 0.822
+>
+> 06/07 02:36:16 - mmengine - INFO - Epoch(val) [200][6/6]   coco/bbox_mAP: 0.8220  coco/bbox_mAP_50: 0.9670  coco/bbox_mAP_75: 0.9670  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: -1.0000  coco/bbox_mAP_l: 0.8220  data_time: 0.9648  time: 1.0142
 
->  Average Precision  (AP) @[ IoU=0.50:0.95 | area=  all | maxDets= 20 ] =  0.575
+![image-20230607113402164](assets/image-20230607113402164.png)
+
+![image-20230607113409977](assets/image-20230607113409977.png)
+
+![image-20230607113417914](assets/image-20230607113417914.png)
+
+#### MMpose (epoch150 + lr调小为80%的epoch150)
+
+>   Average Precision  (AP) @[ IoU=0.50:0.95 | area=  all | maxDets= 20 ] =  0.708
 >
->  Average Precision  (AP) @[ IoU=0.50    | area=  all | maxDets= 20 ] =  1.000
+>   Average Precision  (AP) @[ IoU=0.50    | area=  all | maxDets= 20 ] =  1.000
 >
->  Average Precision  (AP) @[ IoU=0.75    | area=  all | maxDets= 20 ] =  0.692
+>   Average Precision  (AP) @[ IoU=0.75    | area=  all | maxDets= 20 ] =  0.860
 >
->  Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets= 20 ] = -1.000
+>   Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets= 20 ] = -1.000
 >
->  Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets= 20 ] =  0.575
+>   Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets= 20 ] =  0.708
 >
->  Average Recall   (AR) @[ IoU=0.50:0.95 | area=  all | maxDets= 20 ] =  0.610
+>   Average Recall   (AR) @[ IoU=0.50:0.95 | area=  all | maxDets= 20 ] =  0.745
 >
->  Average Recall   (AR) @[ IoU=0.50    | area=  all | maxDets= 20 ] =  1.000
+>   Average Recall   (AR) @[ IoU=0.50    | area=  all | maxDets= 20 ] =  1.000
 >
->  Average Recall   (AR) @[ IoU=0.75    | area=  all | maxDets= 20 ] =  0.762
+>   Average Recall   (AR) @[ IoU=0.75    | area=  all | maxDets= 20 ] =  0.881
 >
->  Average Recall   (AR) @[ IoU=0.50:0.95 | area=medium | maxDets= 20 ] = -1.000
+>   Average Recall   (AR) @[ IoU=0.50:0.95 | area=medium | maxDets= 20 ] = -1.000
 >
->  Average Recall   (AR) @[ IoU=0.50:0.95 | area= large | maxDets= 20 ] =  0.610
+>   Average Recall   (AR) @[ IoU=0.50:0.95 | area= large | maxDets= 20 ] =  0.745
 >
-> 06/04 22:51:42 - mmengine - INFO - Evaluating PCKAccuracy (normalized by ``"bbox_size"``)...
+> 06/07 02:26:24 - mmengine - INFO - Evaluating PCKAccuracy (normalized by ``"bbox_size"``)...
 >
-> 06/04 22:51:42 - mmengine - INFO - Evaluating AUC...
+> 06/07 02:26:24 - mmengine - INFO - Evaluating AUC...
 >
-> 06/04 22:51:42 - mmengine - INFO - Evaluating NME...
+> 06/07 02:26:24 - mmengine - INFO - Evaluating NME...
 >
-> 06/04 22:51:42 - mmengine - INFO - Epoch(val) [160][6/6]   coco/AP: 0.574637  coco/AP .5: 1.000000  coco/AP .75: 0.691982  coco/AP (M): -1.000000  coco/AP (L): 0.574637  coco/AR: 0.609524  coco/AR .5: 1.000000  coco/AR .75: 0.761905  coco/AR (M): -1.000000  coco/AR (L): 0.609524  PCK: 0.917234  AUC: 0.067800  NME: 0.056621  data_time: 4.895422  time: 4.944468
+> 06/07 02:26:24 - mmengine - INFO - Epoch(val) [150][6/6]   coco/AP: 0.708495  coco/AP .5: 1.000000  coco/AP .75: 0.859583  coco/AP (M): -1.000000  coco/AP (L): 0.708495  coco/AR: 0.745238  coco/AR .5: 1.000000  coco/AR .75: 0.880952  coco/AR (M): -1.000000  coco/AR (L): 0.745238  PCK: 0.963719  AUC: 0.127494  NME: 0.043727  data_time: 1.753416  time: 1.782141
+
+![image-20230607113437693](assets/image-20230607113437693.png)
+
+![image-20230607113442908](assets/image-20230607113442908.png)
+
+![image-20230607113449343](assets/image-20230607113449343.png)
+
+![image-20230607113457802](assets/image-20230607113457802.png)
+
+### 可视化
+
+<div>
+    <div style="float: left; width: 50%;">
+        <div style="width: 100%;">
+    		<img src="assets/test_ear.jpg" alt="test_ear" style="zoom: 33.3%;" />
+        </div>
+        <div style="width: 100%;">
+            <img src="assets/test_ear_mmdet.jpg" alt="test_ear_mmdet" style="zoom: 33.3%;" />
+        </div>
+    </div>
+    <div style="float: right; width: 50%;">
+        <div style="width: 100%;">
+            <img src="assets/test_ear_mmpose.jpg" alt="test_ear_mmpose" style="zoom: 33.3%;" />
+        </div>
+    </div>
+</div>
 
 
 
-**MMpose效果不理想，待炼丹完成……**
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> ```shell
+> # mmdet单图推理，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
+> CUDA_VISIBLE_DEVICES=1 PORT=8082 python \
+> 	<path/to/mmdetection/demo/image_demo.py> \
+> 	<path/to/test_ear.jpg> \
+>     <path/to/rtmdet_tiny_ear.py> \
+> 	--weights <path/to/best/mmdet/pth> \
+> 	--out-dir <path/to/output/directory> \
+> 	--device <cpu or cuda or cuda:0 …… > \
+> 	> output.log 2>&1
+> ```
+>
+> ```shell
+> # mmpose单图推理，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
+> CUDA_VISIBLE_DEVICES=1 PORT=8082 python \
+> 	<path/to/mmpose/demo/image_demo.py> \
+> 	<path/to/rtmdet_tiny_ear.py> \
+> 	<path/to/best/mmdet/pth> \
+>     <path/to/rtmpose-s-ear.py> \
+> 	<path/to/best/mmpose/pth> \
+> 	--input <path/to/test_ear.jpg> \
+> 	--output-root <path/to/output/directory> \
+> 	--save-predictions \
+> 	--device <cpu or cuda or cuda:0 …… > \
+> 	--bbox-thr 0.5 \
+>     --kpt-thr 0.5 \
+>     --nms-thr 0.3 \
+>     --radius 8 \
+>     --thickness 7 \
+>     --draw-bbox \
+>     --draw-heatmap \
+>     --show-kpt-idx \
+> 	> output.log 2>&1
+> ```
+
+参考资料：
+
+mmdet
+
+- https://mmdetection.readthedocs.io/zh_CN/latest/user_guides/inference.html
+
+mmpose:
+
+- https://mmpose.readthedocs.io/zh_CN/latest/demos.html
+- https://mmpose.readthedocs.io/zh_CN/latest/user_guides/inference.html（参数设置）
 
 ## 遇到的坑
 
@@ -169,6 +304,20 @@ CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python </Absolute/Path/of/mmpose/tools/tr
 2. 自行解决
 3. https://github.com/open-mmlab/mmpose/pull/1184
 
-### config
+### 创建Config的方法
+
+第一次自定义config时，可以从源码的`configs`文件夹中自行选择组件进行组装再使用，使用无论成功与否，都会在工作目录下生成完整的config，可以基于这个config再进行修改
+
+### Config参数设置
 
 MMpose示例config的默认参数中，CosineAnnealingLR开始的epoch偏晚（150epoch），调早一些效果可能更好
+
+### 调试Config的方法
+
+```shell
+CUDA_VISIBLE_DEVICES=1 PORT=8082 python \
+	<your_command> \
+	> output.log 2>&1
+```
+
+在终端以此格式调用命令，运行日志打印到当前目录下，并且可以根据终端状态检查命令是否仍存活
