@@ -297,12 +297,12 @@ CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python \
 
 mmdet
 
-- https://mmdetection.readthedocs.io/zh_CN/latest/user_guides/inference.html
+- [mmdet-推理demo](https://mmdetection.readthedocs.io/zh_CN/latest/user_guides/inference.html)
 
 mmpose:
 
-- https://mmpose.readthedocs.io/zh_CN/latest/demos.html
-- https://mmpose.readthedocs.io/zh_CN/latest/user_guides/inference.html（参数设置）
+- [mmpose-推理demo](https://mmpose.readthedocs.io/zh_CN/latest/demos.html)
+- [mmpose-参数设置](https://mmpose.readthedocs.io/zh_CN/latest/user_guides/inference.html)
 
 ## 遇到的坑
 
