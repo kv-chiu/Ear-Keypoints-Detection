@@ -241,28 +241,28 @@ CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python \
 > ```shell
 > # mmdet单图推理，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
 > CUDA_VISIBLE_DEVICES=1 PORT=8082 python \
-> 	<path/to/mmdetection/demo/image_demo.py> \
-> 	<path/to/test_ear.jpg> \
+>     <path/to/mmdetection/demo/image_demo.py> \
+>     <path/to/test_ear.jpg> \
 >     <path/to/rtmdet_tiny_ear.py> \
-> 	--weights <path/to/best/mmdet/pth> \
-> 	--out-dir <path/to/output/directory> \
-> 	--device <cpu or cuda or cuda:0 …… > \
-> 	> output.log 2>&1
+>     --weights <path/to/best/mmdet/pth> \
+>     --out-dir <path/to/output/directory> \
+>     --device <cpu or cuda or cuda:0 …… > \
+>     > output.log 2>&1
 > ```
 >
 > ```shell
 > # mmpose单图推理，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
 > CUDA_VISIBLE_DEVICES=1 PORT=8082 python \
-> 	<path/to/mmpose/demo/image_demo.py> \
-> 	<path/to/rtmdet_tiny_ear.py> \
-> 	<path/to/best/mmdet/pth> \
+>     <path/to/mmpose/demo/image_demo.py> \
+>     <path/to/rtmdet_tiny_ear.py> \
+>     <path/to/best/mmdet/pth> \
 >     <path/to/rtmpose-s-ear.py> \
-> 	<path/to/best/mmpose/pth> \
-> 	--input <path/to/test_ear.jpg> \
-> 	--output-root <path/to/output/directory> \
-> 	--save-predictions \
-> 	--device <cpu or cuda or cuda:0 …… > \
-> 	--bbox-thr 0.5 \
+>     <path/to/best/mmpose/pth> \
+>     --input <path/to/test_ear.jpg> \
+>     --output-root <path/to/output/directory> \
+>     --save-predictions \
+>     --device <cpu or cuda or cuda:0 …… > \
+>     --bbox-thr 0.5 \
 >     --kpt-thr 0.5 \
 >     --nms-thr 0.3 \
 >     --radius 8 \
@@ -270,7 +270,7 @@ CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python \
 >     --draw-bbox \
 >     --draw-heatmap \
 >     --show-kpt-idx \
-> 	> output.log 2>&1
+>     > output.log 2>&1
 > ```
 
 参考资料：
