@@ -59,7 +59,7 @@ cd /media/ders/mazhiming/mm/mmhomeworke2/work/result/mmdet
 
 # 开始训练，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
 CUDA_VISIBLE_DEVICES=1 PORT=8082 nohup python \
-	</Absolute/Path/of/mmdetection/tools/train.py> \
+    </Absolute/Path/of/mmdetection/tools/train.py> \
     </Absolute/Path/of/data/MMPosehomework/example/rtmdet_tiny_ear.py> \
     --work-dir </Absolute/Path/of/work/result/mmdet> > output.log 2>&1 &
 ```
@@ -70,7 +70,7 @@ cd /media/ders/mazhiming/mm/mmhomeworke2/work/result/mmpose
 
 # 开始训练，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
 CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python \
-	</Absolute/Path/of/mmpose/tools/train.py> \
+    </Absolute/Path/of/mmpose/tools/train.py> \
     </Absolute/Path/of/data/MMPosehomework/example/rtmpose-s-ear.py> \
     --work-dir </Absolute/Path/of/work/result/mmpose> > output.log 2>&1 &
 ```
@@ -78,10 +78,10 @@ CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python \
 ```python
 # 中途断开，调参数再训，CUDA_VISIBLE_DEVICES根据实际情况修改（选用的显卡的编号）
 CUDA_VISIBLE_DEVICES=2 PORT=8083 nohup python \
-	</Absolute/Path/of/mmpose/tools/train.py> \
+    </Absolute/Path/of/mmpose/tools/train.py> \
     </Absolute/Path/of/data/MMPosehomework/example/rtmpose-s-ear.py> \
     --work-dir </Absolute/Path/of/work/result/mmpose> \
-	--resume </Absolute/Path/of/pth> > output.log 2>&1 &
+    --resume </Absolute/Path/of/pth> > output.log 2>&1 &
 ```
 
 ## 评估结果
