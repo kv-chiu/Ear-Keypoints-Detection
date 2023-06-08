@@ -1,4 +1,4 @@
-# EPI——Ear point identification using MMDet&MMPose
+# EKD——Ear-Keypoints-Detection using MMDet&MMPose
 
 ## 项目简介
 
